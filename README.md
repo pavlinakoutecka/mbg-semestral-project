@@ -1,3 +1,16 @@
-# MBG Semestral project
+# Molecular biology and genetics course - semestral project
 
-Analýza sekvenčních dat SARS-CoV-2 a vzájemných vztahů mutací/proteinů v jednotlivých variantách 
+**Analysis of SARS-CoV-2 sequence data and mutation / protein relationships in individual variants.**
+
+## Source code structure
+### Sequence preprocessing
+
+### Mutation counts
+
+### PCA data preprocessing
+
+### PCA analysis
+
+### Statistical analysis
+
+## Data storage structure
