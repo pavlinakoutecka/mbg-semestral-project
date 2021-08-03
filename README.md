@@ -28,7 +28,14 @@ the edges, two methods for cutting the edges were developed
 <mark> TODO: Lukáš </mark>
 
 ### PCA data preprocessing
-<mark> TODO: Lukáš </mark>
+This part is located in `pca_data_preprocessing.py` file.
+
+It aims to properly preprocess aligned sequences for further PCA analysis. This process can be divided into following steps:
+1. store sequences as a 2D array of characters (for significantly faster analysis)
+2. count mutations on all positions using a function which is very similar to `count_mutations` described above
+3. create a .csv file of sequences' names for their further identification
+4. create a binary matrix (2D array) where 1 at position (r,c) indicates that the sequence r differs from a referential sequence at position c
+5. store this matrix into a .csv file which is easily useable for PCA
 
 ### PCA analysis
 <mark> TODO: Pavel </mark>
