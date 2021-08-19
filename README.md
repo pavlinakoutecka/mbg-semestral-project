@@ -24,8 +24,15 @@ the edges, two methods for cutting the edges were developed
     sequences and filters out those, which have more edge gaps than the mean value of gaps + deviation tolerance; then
     it follows the simple edge cutting algorithm process
 
-### Mutation counts
-<mark> TODO: Lukáš </mark>
+### Mutations counting
+This part is located in `mutations_counting.py` file.
+
+The file contains three functions:
+1. count_mutations(input_file, output_file, num_sequences)
+    It aims to count mutations (i.e. different nucleotides) on all positions and store the results into a .csv file, omitting positions which have no mutations.
+
+2. count_diff_sequences(input_file, output_file, num_sequences)
+3. compute_nucleotides_matrix(input_file, output_file, num_sequences)
 
 ### PCA data preprocessing
 This part is located in `pca_data_preprocessing.py` file.
