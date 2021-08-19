@@ -41,12 +41,15 @@ The file contains three functions:
 ### PCA data preprocessing
 This part is located in `pca_data_preprocessing.py` file.
 
-It aims to properly preprocess aligned sequences for further PCA analysis. This process can be divided into following steps:
-1. store sequences as a 2D array of characters (for significantly faster analysis)
-2. count mutations on all positions using a function which is very similar to `count_mutations` described above
-3. create a .csv file of sequences' names for their further identification
-4. create a binary matrix (2D array) where 1 at position (r,c) indicates that the sequence r differs from a referential sequence at position c
-5. store this matrix into a .csv file which is easily useable for PCA
+It aims to properly preprocess aligned sequences for further PCA analysis. The file contains two functions:
+1. `count_mutations_array(input_file, num_sequences, seq_length)`
+    - count mutations using function `count_mutations` described above and store the result into a standard Python array
+2. `preprocess_pca_data(input_file, output_file, num_sequences)`
+    - store sequences as a 2D array of characters (for significantly faster analysis)
+    - count mutations using the function `count_mutations_array`
+    - create a .csv file of sequences' names for their further identification
+    - create a binary matrix (2D array) where 1 at position (r,c) indicates that the sequence r differs from a referential sequence at position c
+    - store this matrix into a .csv file which is easily useable for PCA
 
 ### PCA analysis
 <mark> TODO: Pavel </mark>
@@ -72,8 +75,8 @@ found [on the ownCloud](https://owncloud.cesnet.cz/index.php/s/jXG08slIJbDptIo).
 - `sequences` - original sequences and their subsets/bunches
 - `sequences_aligned` - aligned version of sequences stored in `sequences` folder
 - `sequences_cut` - sequences from `sequences_aligned` folder with cut gaps at both edges of the sequence
-- `mutations_counts` - <mark> TODO: Lukáš </mark>
-- `pca_input_data` - <mark> TODO: Lukáš </mark>
+- `mutations_counts` - output .csv files of the functions `count_mutations`, `count_diff_sequences`, `compute_nucleotides_matrix`
+- `pca_input_data` - output .csv files of the function 
 
 
 ## Links
