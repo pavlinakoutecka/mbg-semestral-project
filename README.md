@@ -28,13 +28,13 @@ the edges, two methods for cutting the edges were developed
 This part is located in `mutations_counting.py` file.
 
 The file contains three functions:
-1. count_mutations(input_file, output_file, num_sequences)
+1. `count_mutations(input_file, output_file, num_sequences)`
     - simple counting of changes of the characters (nucleotides) at each position
     - storing the results into a .csv file, omitting positions which have no mutations (changes of nucleotide)
-2. count_diff_sequences(input_file, output_file, num_sequences)
+2. `count_diff_sequences(input_file, output_file, num_sequences)`
     - simple counting of sequences which, on the given position, have different character (nucleotide) than the referential sequence
     - storing the results into a .csv file, omitting positions, where all sequences are the same
-3. compute_nucleotides_matrix(input_file, output_file, num_sequences)
+3. `compute_nucleotides_matrix(input_file, output_file, num_sequences)`
     - counting the occurencies of 6 nucleotides (a, c, g, t, -, other) at each position
     - storing the results into a .csv file as a matrix with 6 rows and N columns, where N is a length of sequences
 
