@@ -76,7 +76,7 @@ found [on the ownCloud](https://owncloud.cesnet.cz/index.php/s/jXG08slIJbDptIo).
 - `sequences_aligned` - aligned version of sequences stored in `sequences` folder
 - `sequences_cut` - sequences from `sequences_aligned` folder with cut gaps at both edges of the sequence
 - `mutations_counts` - output .csv files of the functions `count_mutations`, `count_diff_sequences`, `compute_nucleotides_matrix`
-- `pca_input_data` - output .csv files of the function 
+- `pca_input_data` - output .csv files of the function `preprocess_pca_data`
 
 
 ## Links
