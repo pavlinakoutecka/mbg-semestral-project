@@ -38,6 +38,9 @@ The file contains three functions:
     - counting the occurencies of 6 nucleotides (a, c, g, t, -, other) at each position
     - storing the results into a .csv file as a matrix with 6 rows and N columns, where N is a length of sequences
 
+Matlab file `mutations_counting_process_results.m` was used to visualize results into graphs.
+
+
 ### PCA data preprocessing
 This part is located in `pca_data_preprocessing.py` file.
 
