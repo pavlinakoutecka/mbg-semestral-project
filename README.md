@@ -58,7 +58,9 @@ It aims to properly preprocess aligned sequences for further PCA analysis. The f
 <mark> TODO: Pavel </mark>
 
 ### Statistical analysis
-<mark> TODO: Marki </mark>
+This part is located in the `LocCorr.m` file.
+
+This fle contains a function, which has, as it's main input a FASTA file of aligned and cut data. The output is then comprised of three tables, which tell us loci, which are significantly correlated, what mutations occured here, and how many sequences contained these mutations. 
 
 ### Indicating the most significant mutations
 <mark> TODO: Matěj </mark>
