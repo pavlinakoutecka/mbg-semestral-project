@@ -1,0 +1,71 @@
+---
+title: "prim_pca_mbg"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library("data.table")
+library(dplyr)
+library(scatterplot3d) # 3d plots
+library(mvtnorm) # generate spheres
+library(kernlab) # kernel PCA
+
+#setwd("../MBG/mbg-semestral-project/pca_input_data")
+data <- fread("1000s_pca_input.csv")
+```
+
+## Nefiltrovaná data
+
+Omezuju se na malá prvních tisíc pozic, aby se aspoň zachoval poměr dimemenze a pozorování 1:1.
+
+```{r nonfilter, include=FALSE}
+data <- data[,1502:2500]
+pca <- prcomp(data)
+```
+
+Vypsané shrnutí: tady mám problém s velikosti Variance (neměla by překročit $\sqrt{\# příznaků}$), ale tady je o dost větší!!
+Ten obrovský outlier je původní varianta viru - radši ji odfiltruju.
+
+```{r nonfilter_plots, echo=FALSE}
+scatterplot3d(pca$x[,c(1,2,3)], color=rainbow(nrow(data))) 
+```
+
+## Filtrovaná data
+
+```{r nfilter, include=FALSE}
+data <- data[2:nrow(data),]
+pca <- prcomp(data)
+```
+
+Odfiltrované původní pozorování z Wuhanu.
+Variace vypadá lépe.
+
+```{r filter_plots, echo=FALSE}
+scatterplot3d(pca$x[,c(1,2,3)], color=rainbow(nrow(data))) 
+```
+
+Pořád tam zůstává jeden outlier v PC5/6, ale asi se jedná o nepříliš mutovanou verzi.
+
+```{r filter_plots2, echo=FALSE}
+scatterplot3d(pca$x[,c(4,5,6)], color=rainbow(nrow(data))) 
+scatterplot3d(pca$x[,c(7,8,9)], color=rainbow(nrow(data))) 
+scatterplot3d(pca$x[,c(10,11,12)], color=rainbow(nrow(data))) 
+scatterplot3d(pca$x[,c(100,150,200)], color=rainbow(nrow(data))) 
+scatterplot3d(pca$x[,c(400,402,401)], color=rainbow(nrow(data))) 
+```
+
+## PCA pro vyhledávání podobných pozic.
+PCA použitá na vyhledání souvisejících pozice pozic - mají podobnou transformaci v první PCA.
+Tady bych vážně chtěl nějaký vidět klastrování, ale asi bude potřeba víc pozorování, nebo jiný algoritmus, možná k-means, atd.
+
+```{r filtered_plots, echo=FALSE}
+rotation_matrix <- pca$rotation
+pca <- prcomp(rotation_matrix)
+
+scatterplot3d(pca$x[,c(1,2,3)], color=rainbow(nrow(rotation_matrix))) 
+scatterplot3d(pca$x[,c(4,5,6)], color=rainbow(nrow(rotation_matrix))) 
+scatterplot3d(pca$x[,c(7,8,9)], color=rainbow(nrow(rotation_matrix))) 
+scatterplot3d(pca$x[,c(10,11,12)], color=rainbow(nrow(rotation_matrix))) 
+scatterplot3d(pca$x[,c(100,150,200)], color=rainbow(nrow(rotation_matrix))) 
+scatterplot3d(pca$x[,c(400,402,401)], color=rainbow(nrow(rotation_matrix))) 
+```

@@ -1,0 +1,56 @@
+---
+title: "PCA_outline_wrong_way"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+library(data.table)#efficient tables
+library(dplyr)
+library(scatterplot3d) # 3d plots
+library(mvtnorm) # generate spheres
+library(kernlab) # kernel PCA
+library(corrplot)
+```
+
+## Primární PCA analýza
+
+Klasická PCA analýza, nevím, jestli má smysl filtrovat data.
+1) Pokud budeme filtrovat unikátní série mutací, získáme menší, lépe zpracovatelná data, a ukáže nám to všechny exlusivní mutace (ty, které na sobě rozhodně závisejí).
+2) Pokud ponecháme množství dáte můžeme získat kombinace mutací, které spolu zvyšují "fitness" viru a tedy se objevují často.
+
+```{r load_data, echo=FALSE}
+data <- fread("10000s_pca_input.csv")
+data <- data[2:nrow(data),1:10000]
+#data %>% unique()
+```
+
+
+## Korelace
+Korelace samotné u se u ukazují, že budou signifikantní minimálně na sousedních úsecích. 
+
+Tady jsou vidět korelace na pozicích 1-1000.
+
+```{r korr, echo=FALSE}
+data2 <- data[2:nrow(data),1:1000]
+corrplot(cor(data2), method= 'color', type="upper", tl.pos = 'n')
+```
+
+
+## Výsledky PCA
+Na PCA je také viděť rozhodně vliv. Ale potřebujeme získat vztahy mezi jednotlivými featurami.
+
+```{r vis1, echo=FALSE}
+#vizualizace PCA
+pca <- prcomp(data)
+par(mfrow=c(2,2))
+scatterplot3d(pca$x[,c(1,2,3)], color=rainbow(nrow(data))) 
+scatterplot3d(pca$x[,c(4,5,6)], color=rainbow(nrow(data))) 
+scatterplot3d(pca$x[,c(7,8,9)], color=rainbow(nrow(data))) 
+scatterplot3d(pca$x[,c(10,11,12)], color=rainbow(nrow(data))) 
+```
+
+## Zpracování výsledků PCA
+Tady mám problém. Chtěl bych využít PCA k tomu, aby šlo hezky identifikovat vztahy v korelacích (~ = koreluje: var1 ~ [var2 & var3], nebo [var1 | var2] ~ var3 ) a teoreticky by to z toho mělo být čitelné, ale já to v tom vážně nevidím. (Původně jsem to chtěl zkusit matici zobrazení prohnat novou PCA, nebo zkusit corelace mezi zobrazeními jednotlivých featur, ale pořád dokola se motám v teorii a tom, co se s tím vlastně dá dělat a jak to interpretovat.)
+
