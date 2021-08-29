@@ -54,16 +54,10 @@ It aims to properly preprocess aligned sequences for further PCA analysis. The f
     - create a binary matrix (2D array) where 1 at position (r,c) indicates that the sequence r differs from a referential sequence at position c
     - store this matrix into a .csv file which is easily useable for PCA
 
-### PCA analysis
-<mark> TODO: Pavel </mark>
-
 ### Statistical analysis
 This part is located in the `LocCorr.m` file.
 
 This fle contains a function, which has, as it's main input a FASTA file of aligned and cut data. The output is then comprised of three tables, which tell us loci, which are significantly correlated, what mutations occured here, and how many sequences contained these mutations. 
-
-### Indicating the most significant mutations
-<mark> TODO: Matěj </mark>
 
 ## Data
 SARS-CoV-2 Sequences were obtained from the [NCBI library](https://www.ncbi.nlm.nih.gov/sars-cov-2/). At the time of
