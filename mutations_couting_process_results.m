@@ -17,13 +17,6 @@ D = table2array(D);
 th = 0.15 * str2double(num_sequences); 
 M_filt = M(:, D(2,:) > th);
 
-%%
-figure;
-scatter(M_filt(1,:), M_filt(2,:), 10, 'filled');
-title('Numbers of significant mutations on positions');
-xlabel('Position');
-ylabel('Number of mutations');
-
 figure;
 bar(M(1,:), M(2,:));
 title('Numbers of mutations on all positions');
@@ -35,6 +28,12 @@ bar(D(1,:), D(2,:));
 title('Numbers of different sequences on all positions');
 xlabel('Position');
 ylabel('Number of diff. sequences');
+
+figure;
+scatter(M_filt(1,:), M_filt(2,:), 10, 'filled');
+title('Numbers of significant mutations on positions');
+xlabel('Position');
+ylabel('Number of mutations');
 
 %% Occurrences of nucleotides
 num_sequences = '10000';
