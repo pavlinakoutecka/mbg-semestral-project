@@ -44,7 +44,7 @@ Matlab file `mutations_counting_process_results.m` was used to visualize results
 ### PCA data preprocessing
 This part is located in `pca_data_preprocessing.py` file.
 
-It aims to properly preprocess aligned sequences for further PCA analysis (i.e. binarize sequences). 
+It aims to properly preprocess aligned (and cut) sequences for further PCA analysis (i.e. binarize sequences). 
 The file contains two functions:
 1. `count_mutations_array(input_file, num_sequences, seq_length)`
     - count mutations using function `count_mutations` described above and store the result into a standard Python array
